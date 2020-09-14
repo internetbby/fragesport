@@ -11,24 +11,66 @@ namespace fragesport
             Console.WriteLine("Welcome to the quiz!");
             Console.ReadLine();
 
-            System.Console.WriteLine("Which is the only vowel not used as the first letter in a US State?");
-
-            System.Console.WriteLine("1)E   2)I   3) A");
+            QuizText("Which is the only vowel not used as the first letter in a US State?","E","I","A");
 
             score += Ask(1);
-            
 
-            System.Console.WriteLine("What did the Romans call Scotland?");
-            System.Console.WriteLine("1)England   2)Caledonia   3) Karthago");
+            //gör en klass av console.clear
+
+            Console.ReadLine();
+            Console.Clear();
+
+            QuizText("What did the Romans call Scotland?", "England", "Caledonia", "Karthago");
 
             score += Ask(2);
 
+            Console.ReadLine();
+            Console.Clear();
+
+            QuizText("In football, which team has won the Champions League (formerly the European Cup) the most?", "Milan", "Real Madrid", "Barcelona");
+
+            score+= Ask(2);
+
+            Console.ReadLine();
+            Console.Clear();
+
+            QuizText("Who is Donald Trump's vice president", "Margaret Thatcher", "Mike Pompeo", "Mike Pence");
+
+            score+=Ask(3);
+
+            Console.ReadLine();
+            Console.Clear();
+
+
+            QuizText("What is japanese Sake made from", "rice", "wheat", "flowers");
+
+            score+=Ask(1);
+
+            Console.ReadLine();
+            Console.Clear();
+
+            QuizText("What is the capital of Westeros in Game of Thrones?", "Qarth", "Meereen", "King's Landing");
+
+            score+=Ask(3);
+
             
+            Console.ReadLine();
+            Console.Clear();
 
 
             Console.WriteLine("score is " + score);
+
             Console.ReadLine();
         }
+
+
+        
+        static void QuizText(string question, string answer1, string answer2, string answer3){
+            System.Console.WriteLine(question);
+            System.Console.WriteLine("1)"+ answer1+"   2)"+answer2+"   3)"+answer3);
+
+        }
+
 
         static int Ask(int correctAnswer) // checkar svaret+ ger poäng//
         {
@@ -49,7 +91,7 @@ namespace fragesport
 
 
 
-        static int playerTryParse() //convertar string till int//
+        static int playerTryParse() //convertar string till int///
         {
             string playerAnswer;
 
