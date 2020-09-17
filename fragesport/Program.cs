@@ -4,6 +4,7 @@ namespace fragesport
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
 
@@ -11,7 +12,8 @@ namespace fragesport
             Console.WriteLine("Welcome to the quiz!");
             Console.ReadLine();
 
-            QuizText("Which is the only vowel not used as the first letter in a US State?","E","I","A");
+            QuizText("Which is the only vowel not used as the first letter in a US State?");
+            QuizAnswer("E","I","A");
 
             score += Ask(1);
 
@@ -20,21 +22,24 @@ namespace fragesport
             Console.ReadLine();
             Console.Clear();
 
-            QuizText("What did the Romans call Scotland?", "England", "Caledonia", "Karthago");
+            QuizText("What did the Romans call Scotland?");
+            QuizAnswer("England", "Caledonia", "Karthago");
 
             score += Ask(2);
 
             Console.ReadLine();
             Console.Clear();
 
-            QuizText("In football, which team has won the Champions League (formerly the European Cup) the most?", "Milan", "Real Madrid", "Barcelona");
+            QuizText("In football, which team has won the Champions League (formerly the European Cup) the most?");
+            QuizAnswer("Milan", "Real Madrid", "Barcelona");
 
             score+= Ask(2);
 
             Console.ReadLine();
             Console.Clear();
 
-            QuizText("Who is Donald Trump's vice president", "Margaret Thatcher", "Mike Pompeo", "Mike Pence");
+            QuizText("Who is Donald Trump's vice president");
+            QuizAnswer("Margaret Thatcher", "Mike Pompeo", "Mike Pence");
 
             score+=Ask(3);
 
@@ -42,14 +47,16 @@ namespace fragesport
             Console.Clear();
 
 
-            QuizText("What is japanese Sake made from", "rice", "wheat", "flowers");
+            QuizText("What is japanese Sake made from");
+            QuizAnswer("rice", "wheat", "flowers");
 
             score+=Ask(1);
 
             Console.ReadLine();
             Console.Clear();
 
-            QuizText("What is the capital of Westeros in Game of Thrones?", "Qarth", "Meereen", "King's Landing");
+            QuizText("What is the capital of Westeros in Game of Thrones?");
+            QuizAnswer("Qarth", "Meereen", "King's Landing");
 
             score+=Ask(3);
 
@@ -65,12 +72,14 @@ namespace fragesport
 
 
         
-        static void QuizText(string question, string answer1, string answer2, string answer3){
+        static void QuizText(string question){
             System.Console.WriteLine(question);
-            System.Console.WriteLine("1)"+ answer1+"   2)"+answer2+"   3)"+answer3);
 
         }
 
+        static void QuizAnswer(string answer1, string answer2, string answer3){
+           System.Console.WriteLine("1)"+ answer1+"   2)"+answer2+ "   3)"+answer3);
+        }
 
         static int Ask(int correctAnswer) // checkar svaret+ ger poäng//
         {
