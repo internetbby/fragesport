@@ -1,18 +1,106 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace fragesport
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
+           /* List<string[]> answers = new List<string[]>();
+            List<string> questions = new List<string>();
+            List<int> correctAnswers = new List<int>();
+            
+            
 
+            questions.Add("Fråga 1: aregay");
+            answers.Add(new string[]{"A", "B", "C"});
+            correctAnswers.Add(1);
+
+            questions.Add("Fråga 2: sthsrth");
+             answers.Add(new string[]{"O", "Y", "U"});
+
+
+
+            System.Console.WriteLine(answers[1][0]);
+
+            Random generator = new Random();
+
+            int q = generator.Next(2);
+
+            System.Console.WriteLine(questions[q]);
+            string answer = Console.ReadLine();
+
+            int corr = correctAnswers[q]
+            if (answer == answers[q][corr])
+            {
+
+            }*/
             int score = 0; 
-            Console.WriteLine("Welcome to the quiz!");
-            Console.ReadLine();
+            Random Generator= new Random();
 
-            QuizText("Which is the only vowel not used as the first letter in a US State?");
+            List<string> questions = new List<string>();
+            List<string[]> answers = new List<string[]>();
+            List<int> correctAnswer = new List<int>();
+
+            questions.Add("Which is the only vowel not used as the first letter in a US State?");
+            answers.Add(new string[]{"E","I","A"});
+            correctAnswer.Add(1);
+
+
+            questions.Add("What did the Romans call Scotland?");
+            answers.Add(new string[]{"England", "Caledonia", "Karthago"});
+            correctAnswer.Add(2); // add the questions
+
+            int questionsListed = questions.Count + 1;  //gives the randomizer number to go by when randomizing
+
+            string exit = "N"; 
+
+            while (exit!= "N"){
+
+                Console.WriteLine("Welcome to the quiz!");
+                Console.ReadLine();
+
+                if (questions.Count>0){
+                    int randomizer = Generator.Next(questionsListed);
+                    System.Console.WriteLine(questions[randomizer]);
+                    System.Console.WriteLine(answers[randomizer]);
+                    int corr= correctAnswer[randomizer];
+                    score+= Ask(corr);  //asks the random question, then the answers at that list index samt ger correctAnswer och checkar om det rätt med ask metoden
+
+                    questions.RemoveAt(randomizer);
+
+                }
+
+                System.Console.WriteLine("quiz done! wanna retry?");
+                System.Console.WriteLine("[Y/N]");
+                string exitAnswer = Console.ReadLine();
+                
+
+                exit = exitAnswer.ToUpper();
+                while (exit != "Y" ^ exit != "N"){
+                    System.Console.WriteLine("please input valid answer");
+                    exitAnswer = Console.ReadLine();
+                    exit = exitAnswer.ToUpper();
+                }
+
+
+                if (exit = "Y"){
+
+                }  // fixa så om man retryar så läggs alla frågor in igen 
+
+
+            }
+           
+
+            
+
+            
+
+
+            
+
+            /*QuizText("Which is the only vowel not used as the first letter in a US State?");
             QuizAnswer("E","I","A");
 
             score += Ask(1);
@@ -62,7 +150,7 @@ namespace fragesport
 
             
             Console.ReadLine();
-            Console.Clear();
+            Console.Clear();*/
 
 
             Console.WriteLine("score is " + score);
