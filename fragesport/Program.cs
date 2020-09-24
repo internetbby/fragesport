@@ -7,87 +7,89 @@ namespace fragesport
     {
         static void Main(string[] args)
         {
-           /* List<string[]> answers = new List<string[]>();
-            List<string> questions = new List<string>();
-            List<int> correctAnswers = new List<int>();
-            
-            
-
-            questions.Add("Fråga 1: aregay");
-            answers.Add(new string[]{"A", "B", "C"});
-            correctAnswers.Add(1);
-
-            questions.Add("Fråga 2: sthsrth");
-             answers.Add(new string[]{"O", "Y", "U"});
-
-
-
-            System.Console.WriteLine(answers[1][0]);
-
-            Random generator = new Random();
-
-            int q = generator.Next(2);
-
-            System.Console.WriteLine(questions[q]);
-            string answer = Console.ReadLine();
-
-            int corr = correctAnswers[q]
-            if (answer == answers[q][corr])
-            {
-
-            }*/
             int score = 0; 
             Random Generator= new Random();
 
-            List<string> questions = new List<string>();
-            List<string[]> answers = new List<string[]>();
-            List<int> correctAnswer = new List<int>();
+            List<string> completeQuestions = new List<string>();
+            List<string[]> completeAnswers = new List<string[]>();
+            List<int> completeCorrectAnswer = new List<int>();
 
-            questions.Add("Which is the only vowel not used as the first letter in a US State?");
-            answers.Add(new string[]{"E","I","A"});
-            correctAnswer.Add(1);
+            completeQuestions.Add("Which is the only vowel not used as the first letter in a US State?");
+            completeAnswers.Add(new string[]{"1)E  ","2)I  ","3)A  "});
+            completeCorrectAnswer.Add(1);
+
+            completeQuestions.Add("In football, which team has won the Champions League (formerly the European Cup) the most?");
+            completeAnswers.Add(new string[]{"1)Milan  ", "2)Real Madrid  ", "3)Barcelona  "});
+            completeCorrectAnswer.Add(2);
+
+            completeQuestions.Add("What did the Romans call Scotland?");
+            completeAnswers.Add(new string[]{"1)England  ", "2)Caledonia  ", "3)Karthago  "});
+            completeCorrectAnswer.Add(2); // add the questions
+
+            completeQuestions.Add("Who is Donald Trumps vice president?");
+            completeAnswers.Add(new string[]{"1)Margaret Thatcher  ", "2)Mike Pompeo  ", "3)Mike Pence  "});
+            completeCorrectAnswer.Add(3);
+
+            completeQuestions.Add("what is sake made from?");
+            completeAnswers.Add(new string[]{"1)rice  ", "2)wheat  ", "3)flower  "});
+            completeCorrectAnswer.Add(1); // 
 
 
-            questions.Add("What did the Romans call Scotland?");
-            answers.Add(new string[]{"England", "Caledonia", "Karthago"});
-            correctAnswer.Add(2); // add the questions
 
-            int questionsListed = questions.Count + 1;  //gives the randomizer number to go by when randomizing
+            
 
-            string exit = "N"; 
 
-            while (exit!= "N"){
+
+
+            List<string> questions = new List<string>(completeQuestions);
+            List<string[]> answers = new List<string[]>(completeAnswers);
+            List<int> correctAnswer = new List<int>(completeCorrectAnswer); //duplicates a list so i can change them up and then return them to their full state after the quiz is done
+            int questionsListed =questions.Count;
+            int randomizer = Generator.Next(questionsListed);
+            
+
+            string exit ="" ; 
+
+            while (exit != "n"){
 
                 Console.WriteLine("Welcome to the quiz!");
-                Console.ReadLine();
+                Console.ReadLine(); 
 
-                if (questions.Count>0){
-                    int randomizer = Generator.Next(questionsListed);
+                while (questions.Count>0){
+                    questionsListed = questions.Count ;  //gives the randomizer number to go by when randomizing
+                    randomizer = Generator.Next(questionsListed);
                     System.Console.WriteLine(questions[randomizer]);
-                    System.Console.WriteLine(answers[randomizer]);
+                    Console.WriteLine(String.Join("\n", answers[randomizer]));
                     int corr= correctAnswer[randomizer];
                     score+= Ask(corr);  //asks the random question, then the answers at that list index samt ger correctAnswer och checkar om det rätt med ask metoden
 
                     questions.RemoveAt(randomizer);
+                    answers.RemoveAt(randomizer);
+                    correctAnswer.RemoveAt(randomizer);
+                    Console.ReadLine();
+                    Console.Clear();
 
                 }
 
                 System.Console.WriteLine("quiz done! wanna retry?");
                 System.Console.WriteLine("[Y/N]");
                 string exitAnswer = Console.ReadLine();
-                
+                exit = exitAnswer.ToLower();
 
-                exit = exitAnswer.ToUpper();
-                while (exit != "Y" ^ exit != "N"){
+
+                while (exit != "y" || exit != "n"){
                     System.Console.WriteLine("please input valid answer");
                     exitAnswer = Console.ReadLine();
-                    exit = exitAnswer.ToUpper();
+                    exit = exitAnswer.ToLower();
                 }
 
 
-                if (exit = "Y"){
+                if (exit == "y"){
 
-                }  // fixa så om man retryar så läggs alla frågor in igen 
+                       questions = completeQuestions; 
+                       answers = completeAnswers; 
+                       correctAnswer = completeCorrectAnswer;
+                }  
 
 
             }
@@ -100,40 +102,7 @@ namespace fragesport
 
             
 
-            /*QuizText("Which is the only vowel not used as the first letter in a US State?");
-            QuizAnswer("E","I","A");
-
-            score += Ask(1);
-
-            //gör en klass av console.clear
-
-            Console.ReadLine();
-            Console.Clear();
-
-            QuizText("What did the Romans call Scotland?");
-            QuizAnswer("England", "Caledonia", "Karthago");
-
-            score += Ask(2);
-
-            Console.ReadLine();
-            Console.Clear();
-
-            QuizText("In football, which team has won the Champions League (formerly the European Cup) the most?");
-            QuizAnswer("Milan", "Real Madrid", "Barcelona");
-
-            score+= Ask(2);
-
-            Console.ReadLine();
-            Console.Clear();
-
-            QuizText("Who is Donald Trump's vice president");
-            QuizAnswer("Margaret Thatcher", "Mike Pompeo", "Mike Pence");
-
-            score+=Ask(3);
-
-            Console.ReadLine();
-            Console.Clear();
-
+            /*
 
             QuizText("What is japanese Sake made from");
             QuizAnswer("rice", "wheat", "flowers");
